@@ -1,0 +1,15 @@
+{
+  "name": "obsidian-bidirectional",
+  "version": "1.0.0",
+  "description": "Automatically populate reverse frontmatter properties in Obsidian",
+  "main": "main.js",
+  "scripts": {
+    "build": "node esbuild.config.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "esbuild": "^0.21.0",
+    "obsidian": "^1.5.0",
+    "typescript": "^5.4.0"
+  }
+}

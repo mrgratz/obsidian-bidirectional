@@ -1,0 +1,9 @@
+{
+  "id": "bidirectional",
+  "name": "Bidirectional Auto-Population",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Automatically populate reverse frontmatter properties (e.g., supersedes/superseded_by).",
+  "author": "Grae",
+  "isDesktopOnly": false
+}
