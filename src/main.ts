@@ -18,7 +18,7 @@ export default class BidirectionalPlugin extends Plugin {
 
 		this.registerEvent(
 			this.app.metadataCache.on("changed", (file) => {
-				this.handleMetadataChange(file);
+				void this.handleMetadataChange(file);
 			})
 		);
 
@@ -75,9 +75,10 @@ export default class BidirectionalPlugin extends Plugin {
 		const sourceBasename = file.basename;
 
 		if (this.settings.confirmBeforeUpdate) {
-			new ConfirmUpdateModal(this.app, targetFile.basename, sourceBasename, async () => {
-				await this.writeSupersededBy(targetFile, sourceBasename);
-				new Notice(`Bidirectional: Updated "${targetFile.basename}" as superseded by "${sourceBasename}"`);
+			new ConfirmUpdateModal(this.app, targetFile.basename, sourceBasename, () => {
+				void this.writeSupersededBy(targetFile, sourceBasename).then(() => {
+					new Notice(`Bidirectional: Updated "${targetFile.basename}" as superseded by "${sourceBasename}"`);
+				});
 			}).open();
 		} else {
 			await this.writeSupersededBy(targetFile, sourceBasename);
